@@ -16,6 +16,7 @@ class AppAsset extends AssetBundle
         'css/bootstrap.min.css',
     ];
     public $js = [
+        'js/ajax-modal-popup.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

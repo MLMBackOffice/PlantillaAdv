@@ -33,7 +33,11 @@ class CompraController extends Controller
     
     public function actionQrcode() {
     $mailTo = new MailTo(['email' => 'ivan-salazar@hotmail.com']);
-    return QrCode::png('$mailTo->getText()');
+    $bit = new Bitcoin();
+    $bit->address ='1AfMEZLAGGimTHunNpvJ1BVTnRWFhMEewr';
+    $bit->amount ='0.053';
+    return QrCode::png($bit->getText());// return QrCode::png('$mailTo->getText()');
+  
     // you could also use the following
     // return return QrCode::png($mailTo);
 }   
@@ -73,6 +77,8 @@ class CompraController extends Controller
     public function actionCreate()
     {
         $model = new Compra();
+        
+      
       //  $paq = new PaquetesQuery();
        // $paquetes= $paq->all();
         if ($model->load(Yii::$app->request->post()) ) {
@@ -88,7 +94,14 @@ class CompraController extends Controller
             ]);
         }
     }
-
+    
+      public function actionVercompra()
+    {
+        $model = new Compra();
+        
+         return $this->renderAjax('//compra/modal_compra',  
+            [ 'model' => $model,]);
+    }
     /**
      * Updates an existing Compra model.
      * If update is successful, the browser will be redirected to the 'view' page.
