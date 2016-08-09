@@ -17,7 +17,8 @@ use yii\helpers\Url;
                 font-size: 20px" class="btn btn-success btn-block"><i class="icon fa fa-bitcoin  pull-left" 
                                                style="font-size: 25px"></i>   Pay with Tropay</button></div>
     <div class="flat-green"><button id="btn-tropay" data-publicKey="eyJpdiI6IkdFaFVNaTY3ZUF4UzA1STJwVGNkWEE9PSIsInZhbHVlIjoibFozYmF4QXF3QVpTUVl6TmlQWExxQnBWZ1BMOGdPdVNWcmRFSDRnbGNEMk1hbEtnMlpHOGJJRVpNc2RocGlQSyIsIm1hYyI6IjU1NzRiNGFhNDA4OGY5NGUzMTBmM2ExOGVlYTA3OGY3NDFlZDNlMmI5NTAxZDI5ZDdhZDRhZWRiNmRkY2JiMmEifQ==" data-title="Compra libro" data-importe="150" data-ref="4478" style="width: 220px ; height: 50px; border-radius: 10px; font-size: 20px" class="btn btn-success btn-block"><i class="icon fa fa-bitcoin  pull-left" style="font-size: 25px"></i>   Pay with Tropay</button></div>
-   
+     <?= $form->field($model, 'empresa_id')->hiddenInput() ?>
+
  */
   ?>
      
@@ -27,10 +28,11 @@ use yii\helpers\Url;
                 'options' => [
                     'id' => 'create-modal-compra'
                 ]
-    ]); ?>
+    ]); 
+    echo Html::hiddenInput('carId', $empresa->cardId);
+    ?>
 
-  
-
+ 
     <?= $form->field($model, 'id_paquete')->dropDownList(
          ArrayHelper::map(paquetes::find()->all(), 'id_paquete', 'nombre'),
             ['prompt' => 'Seleccione',

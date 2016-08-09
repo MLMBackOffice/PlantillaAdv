@@ -1,0 +1,92 @@
+<?php
+
+namespace backend\models;
+
+use Yii;
+
+/**
+ * This is the model class for table "{{%compra}}".
+ *
+ * @property integer $id_compra
+ * @property string $fecha_registro
+ * @property integer $id_usuario
+ * @property integer $id_paquete
+ * @property string $estado
+ * @property integer $empresa_id
+ *
+ * @property Empresa $empresa
+ * @property Paquetes $idPaquete
+ * @property User[] $users
+ */
+class compra extends \yii\db\ActiveRecord
+{
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return '{{%compra}}';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['fecha_registro'], 'safe'],
+            [['id_usuario', 'id_paquete'], 'required'],
+            [['id_usuario', 'id_paquete', 'estado', 'empresa_id'], 'integer'],
+            [['empresa_id'], 'exist', 'skipOnError' => true, 'targetClass' => Empresa::className(), 'targetAttribute' => ['empresa_id' => 'Id']],
+            [['id_paquete'], 'exist', 'skipOnError' => true, 'targetClass' => Paquetes::className(), 'targetAttribute' => ['id_paquete' => 'id_paquete']],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id_compra' => 'Id Compra',
+            'fecha_registro' => 'Fecha Registro',
+            'id_usuario' => 'Id Usuario',
+            'id_paquete' => 'Id Paquete',
+            'estado' => '0:pendiente confirmar 1: confirmada 2: cancelada',
+            'empresa_id' => 'Empresa ID',
+        ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getEmpresa()
+    {
+        return $this->hasOne(Empresa::className(), ['Id' => 'empresa_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getIdPaquete()
+    {
+        return $this->hasOne(Paquetes::className(), ['id_paquete' => 'id_paquete']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUsers()
+    {
+        return $this->hasMany(User::className(), ['id_compra' => 'id_compra']);
+    }
+
+    /**
+     * @inheritdoc
+     * @return CompraQuery the active query used by this AR class.
+     */
+    public static function find()
+    {
+        return new CompraQuery(get_called_class());
+    }
+}

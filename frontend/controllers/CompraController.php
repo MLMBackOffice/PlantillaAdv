@@ -4,14 +4,14 @@ namespace frontend\controllers;
 
 use Yii;
 use backend\models\Compra;
+use backend\models\Empresa;
 use backend\models\CompraSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use backend\models\PaquetesQuery;
 use dosamigos\qrcode\formats\MailTo;
 use dosamigos\qrcode\QrCode;
-use yii\web\JsonParser;
+use linslin\yii2\curl;
 /**
  * CompraController implements the CRUD actions for Compra model.
  */
@@ -79,20 +79,39 @@ class CompraController extends Controller
     {
         $model = new Compra();
         
+        if (($empresa = Empresa::findOne('1')) == null) {
+           
+            throw new NotFoundHttpException('The company  does not exist.');
+        }
+        
 
         if ($model->load(Yii::$app->request->post()) ) {
-         
+         $model->empresa_id= $empresa->Id;
             $model->id_usuario=Yii::$app->user->id;
             $model->fecha_registro=date('Y-m-d h:m:s');
              $model->save();
-            return $this->redirect("https://tropay.com/v0/secure-api/get-usd-balance");
+             
+             
+                $curl = new curl\Curl();
+ 
+        //post http://example.com/
+        $response = $curl->setOption(
+                CURLOPT_POSTFIELDS, 
+                http_build_query(array(
+                    'type' => 'int',
+                    'txid' => '54345f6a-3f3a-4376-abb3-8bd8c7f6d3d6'
+                )
+            ))
+            ->post('https://tropay.com/v0/secure-api/get-usd-balance');
+return $response;
+        //    return $this->redirect(array('https://tropay.com/v0/secure-api/get-usd-balance', 'type' => 'int', 'txid' => '54345f6a-3f3a-4376-abb3-8bd8c7f6d3d6'));
             
             /*return $this->render('//compra/_form',  
             [ 'model' => $model,]);*/
         } else {
             return $this->render('//compra/_form', [
                 'model' => $model,
-       //         'paquetes' => $paquetes,
+                'empresa' => $empresa,
             ]);
         }
     }
