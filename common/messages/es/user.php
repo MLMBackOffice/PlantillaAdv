@@ -8,6 +8,7 @@ return [
     'Created At' => 'Fecha de Creación',
     'Updated At' => 'Fecha de Actualización',
     'Full Name' => 'Nombre completo',
+    'Username' => 'Nombre de Usuario',
 
     'Name' => 'Nombre',
     'Can Admin' => 'Puede Administrar',

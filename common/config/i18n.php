@@ -12,15 +12,9 @@
 return [
     'color' => null,
     'interactive' => true,
-   /* 'sourcePath' => '@yii',
-    'messagePath' => '@yii/messages',*/
     'sourcePath' => __DIR__. DIRECTORY_SEPARATOR .'..',
-    // Root directory containing message translations.
     'messagePath' => __DIR__ . DIRECTORY_SEPARATOR .'..'. DIRECTORY_SEPARATOR . 'messages',
-    // array, required, list of language codes that the extracted messages
-    // should be translated to. For example, ['zh-CN', 'de'].
- 
-    'languages' => ['es_ES','en_US','pt_PT'],
+    'languages' => ['de','es','it','ja','hi','ru'],
     'translator' => 'Yii::t',
     'sort' => false,
     'overwrite' => true,
