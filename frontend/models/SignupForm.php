@@ -1,6 +1,7 @@
 <?php
 namespace frontend\models;
 
+use Yii;
 use yii\base\Model;
 use common\models\User;
 
@@ -16,6 +17,7 @@ class SignupForm extends Model
     public $username;
     public $email;
     public $password;
+    public $password_repeat;
     public $direccion_billetera;
     
 
@@ -40,15 +42,19 @@ class SignupForm extends Model
             ['username', 'required'],
             ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
             ['username', 'string', 'min' => 2, 'max' => 255],
+            ['username', 'username_existe'],
 
             ['email', 'trim'],
             ['email', 'required'],
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
             ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
-
+            ['email', 'email_existe'],
+            
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
+            
+            ['password_repeat', 'compare', 'compareAttribute' => 'password', 'message' => 'Las contrasseñas no coinciden'],            
         ];
     }
 
@@ -83,5 +89,43 @@ class SignupForm extends Model
         if (!$user ) {
             $this->addError('patrocinador', 'Patrocinador no existe.');
         }
+    }
+    
+    public function attributeLabels() {
+        return [
+            'username' => Yii::t('app', 'Username'),
+            'patrocinador' => Yii::t('app', 'Sponsor'),
+            'pais' => Yii::t('app', 'Country'),
+            'direccion_billetera' => Yii::t('app', 'Wallet Address'),
+            'nombre_completo' => Yii::t('app', 'Full Name'),
+            'email' => Yii::t('app', 'Email'),
+            'password' => Yii::t('app', 'Password'),            
+            'password_repeat'=> Yii::t('app', 'Password Repeat'),
+        ];
+    }
+    
+    public function email_existe($attribute, $params)
+    {
+  
+        //Buscar el email en la tabla
+        $table = User::find()->where("email=:email", [":email" => $this->email]);
+
+        //Si el email existe mostrar el error
+        if ($table->count() == 1)
+        {
+             $this->addError($attribute, "El correo seleccionado ya existe");
+        }
+    }
+    
+    public function username_existe($attribute, $params)
+    {
+            //Buscar el username en la tabla
+              $table = User::find()->where("username=:username", [":username" => $this->username]);
+  
+            //Si el username existe mostrar el error
+            if ($table->count() == 1)
+            {
+                          $this->addError($attribute, "El usuario seleccionado ya existe");
+            }
     }
 }

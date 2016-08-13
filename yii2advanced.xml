@@ -2,7 +2,7 @@
   <VerLbl/>
   <VerNotes/>
   <DefTblOpts/>
-  <DocFolder>C:\xampp\htdocs\PlantillaAdv</DocFolder>
+  <DocFolder>C:\xampp\htdocs\PlantillaAdv2</DocFolder>
   <Sch Cm="" nm="schemaA">
     <Tbl UsSo="1" nm="comisiones">
       <TblOpts>ENGINE=InnoDB DEFAULT CHARSET=latin1</TblOpts>
@@ -23,7 +23,7 @@
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="compra">
-      <TblOpts>ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1</TblOpts>
+      <TblOpts>ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1</TblOpts>
       <Pk ClNs="id_compra" nm="pkcompra"/>
       <Cl au="1" df="" nm="id_compra" nu="0">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
@@ -39,13 +39,12 @@
       </Cl>
       <Cl au="0" df="0" nm="estado" nu="1">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
-        <Cm>0:pendiente confirmar 1: confirmada 2: cancelada</Cm>
       </Cl>
       <Cl au="0" df="" nm="empresa_id" nu="1">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
       <Fk deAc="3" nm="fk_compra_Empresa" prLkCl="Id" upAc="3">
-        <PrTb mn="0" nm="Empresa" oe="1" sch="schemaA" zr="1"/>
+        <PrTb mn="0" nm="empresa" oe="1" sch="schemaA" zr="1"/>
         <CdTb mn="1" nm="compra" oe="0" sch="schemaA" zr="1"/>
         <ClPr cdCl="empresa_id" prCl="Id"/>
       </Fk>
@@ -65,9 +64,9 @@
       <UniqueConstraints/>
       <SchTrHis/>
     </Tbl>
-    <Tbl UsSo="1" nm="Empresa">
+    <Tbl UsSo="1" nm="empresa">
       <TblOpts>ENGINE=InnoDB DEFAULT CHARSET=latin1</TblOpts>
-      <Pk ClNs="Id" nm="pkEmpresa"/>
+      <Pk ClNs="Id" nm="pkempresa"/>
       <Cl au="0" df="" nm="Id" nu="0">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
@@ -239,6 +238,77 @@
       </UniqueConstraints>
       <SchTrHis/>
     </Tbl>
+    <Tbl UsSo="1" nm="users">
+      <TblOpts>ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1</TblOpts>
+      <Pk ClNs="id" nm="pkusers"/>
+      <Cl au="1" df="" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="username" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre_completo" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="pais" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="email" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="80" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="password" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="250" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="authKey" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="250" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="patrocinador" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="direccion_billetera" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="accessToken" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="250" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="activate" nu="0">
+        <DT arr="0" ds="TinyInt" en="" id="-6" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="estado" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="verification_code" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="250" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_compra" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_users_compra" prLkCl="id_compra" upAc="3">
+        <PrTb mn="0" nm="compra" oe="1" sch="schemaA" zr="1"/>
+        <CdTb mn="1" nm="users" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="id_compra" prCl="id_compra"/>
+      </Fk>
+      <Fk deAc="0" nm="users_ibfk_1" prLkCl="id" upAc="0">
+        <PrTb mn="0" nm="users" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="users" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="patrocinador" prCl="id"/>
+      </Fk>
+      <Fk deAc="0" nm="users_ibfk_2" prLkCl="id" upAc="0">
+        <PrTb mn="0" nm="paises" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="users" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="pais" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="pais" spa="0" unq="0">
+        <ClNs>pais</ClNs>
+        <OptTx>USES BTREE</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="patrocinador" spa="0" unq="0">
+        <ClNs>patrocinador</ClNs>
+        <OptTx>USES BTREE</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
     <CustomTypes/>
   </Sch>
   <Dgm nm="diagramA">
@@ -263,46 +333,60 @@
       <DbTableRectangleFill>HeaderFooterFill</DbTableRectangleFill>
       <svg path=""/>
     </DiaProps>
-    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="comisiones" x="766" y="50"/>
-    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="compra" x="406" y="286"/>
-    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="migration" x="1363" y="50"/>
-    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="nivel" x="766" y="144"/>
-    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="paises" x="459" y="50"/>
-    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="paquetes" x="714" y="292"/>
-    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="user" x="50" y="50"/>
-    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="Empresa" x="75" y="308"/>
-    <FkGl bkCl="ff000000" childEdge="WEST" nm="schemaA.compra.fk_compra_Empresa" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="comisiones" x="1847" y="50"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="compra" x="772" y="66"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="empresa" x="1087" y="114"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="migration" x="2155" y="50"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="nivel" x="1847" y="144"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="paises" x="434" y="50"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="paquetes" x="955" y="388"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="user" x="89" y="227"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="users" x="666" y="400"/>
+    <FkGl bkCl="ff000000" childEdge="EAST" nm="schemaA.compra.fk_compra_Empresa" parentEdge="NORTH" positioner="TwoLineUserLinkPositioner">
       <positionableLines>
-        <positionableLine lineRole="SINGLE_LINE" x1="279" x2="406" y1="340" y2="340"/>
+        <positionableLine lineRole="PARENT_LINE" x1="1092" x2="1092" y1="114" y2="113"/>
+        <positionableLine lineRole="CHILD_LINE" x1="1000" x2="1088" y1="109" y2="109"/>
       </positionableLines>
     </FkGl>
-    <FkGl bkCl="ff000000" childEdge="EAST" nm="schemaA.compra.fk_compra_paquetes" parentEdge="WEST" positioner="OneLineUserLinkPositioner">
+    <FkGl bkCl="ff000000" childEdge="SOUTH" nm="schemaA.compra.fk_compra_paquetes" parentEdge="NORTH" positioner="OneLineUserLinkPositioner">
       <positionableLines>
-        <positionableLine lineRole="SINGLE_LINE" x1="714" x2="634" y1="353" y2="353"/>
+        <positionableLine lineRole="SINGLE_LINE" x1="960" x2="960" y1="388" y2="171"/>
       </positionableLines>
     </FkGl>
-    <FkGl bkCl="ff000000" childEdge="EAST" nm="schemaA.user.fk_user_compra" parentEdge="NORTH" positioner="TwoLineUserLinkPositioner">
+    <FkGl bkCl="ff000000" childEdge="EAST" nm="schemaA.user.fk_user_compra" parentEdge="WEST" positioner="ThreeLineUserLinkPositioner">
       <positionableLines>
-        <positionableLine lineRole="PARENT_LINE" x1="520" x2="520" y1="286" y2="158"/>
-        <positionableLine lineRole="CHILD_LINE" x1="339" x2="516" y1="154" y2="154"/>
+        <positionableLine lineRole="PARENT_LINE" x1="772" x2="422" y1="166" y2="166"/>
+        <positionableLine lineRole="CHILD_LINE" x1="378" x2="414" y1="232" y2="232"/>
+        <positionableLine lineRole="MIDDLE_LINE" x1="418" x2="418" y1="228" y2="170"/>
       </positionableLines>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="SOUTH" nm="schemaA.user.user_ibfk_1" parentEdge="NORTH" positioner="OneLineUserLinkPositioner">
       <positionableLines/>
     </FkGl>
-    <FkGl bkCl="ff000000" childEdge="EAST" nm="schemaA.user.user_ibfk_2" parentEdge="WEST" positioner="OneLineUserLinkPositioner">
+    <FkGl bkCl="ff000000" childEdge="EAST" nm="schemaA.user.user_ibfk_2" parentEdge="SOUTH" positioner="TwoLineUserLinkPositioner">
       <positionableLines>
-        <positionableLine lineRole="SINGLE_LINE" x1="459" x2="339" y1="76" y2="76"/>
+        <positionableLine lineRole="PARENT_LINE" x1="641" x2="641" y1="103" y2="228"/>
+        <positionableLine lineRole="CHILD_LINE" x1="378" x2="637" y1="232" y2="232"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="schemaA.users.fk_users_compra" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="851" x2="851" y1="171" y2="400"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="SOUTH" nm="schemaA.users.users_ibfk_1" parentEdge="NORTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="WEST" nm="schemaA.users.users_ibfk_2" parentEdge="SOUTH" positioner="TwoLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="PARENT_LINE" x1="462" x2="462" y1="103" y2="401"/>
+        <positionableLine lineRole="CHILD_LINE" x1="666" x2="466" y1="405" y2="405"/>
       </positionableLines>
     </FkGl>
     <Notes/>
     <Zones/>
   </Dgm>
-  <RnmMgr NxRnmId="2">
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="compra" SupCls="Schema" SupNme="schemaA">
-      <Rnm id="1" nNm="empresa_id" oNm="Id"/>
-    </RnmCh>
-  </RnmMgr>
+  <RnmMgr NxRnmId="1"/>
   <DbDocOptionMgr>
     <BasicOptionMgr>
       <Name>db.doc.option.mgr</Name>
@@ -319,10 +403,105 @@
     </BasicOptionMgr>
   </DbDocOptionMgr>
   <OpenEditors>
-    <OpenEditor ClsNm="Diagram" fqn="null.diagramA" selected="0"/>
+    <OpenEditor ClsNm="Diagram" fqn="null.diagramA" selected="1"/>
   </OpenEditors>
   <TreePaths>
     <TreePath/>
+    <TreePath>/Schemas (1)</TreePath>
+    <TreePath>/Schemas (1)/schemaA</TreePath>
+    <TreePath>/Schemas (1)/schemaA/Tables (9)</TreePath>
+    <TreePath>/Diagrams (1)</TreePath>
+    <TreePath>/Diagrams (1)/diagramA</TreePath>
   </TreePaths>
-  <SqlTexts/>
+  <SqlTexts>
+    <SqlText path="">
+      <Sql>-- phpMyAdmin SQL Dump&#13;
+-- version 4.5.1&#13;
+-- http://www.phpmyadmin.net&#13;
+--&#13;
+-- Servidor: 127.0.0.1&#13;
+-- Tiempo de generación: 12-08-2016 a las 04:35:22&#13;
+-- Versión del servidor: 10.1.13-MariaDB&#13;
+-- Versión de PHP: 5.6.23&#13;
+&#13;
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";&#13;
+SET time_zone = "+00:00";&#13;
+&#13;
+&#13;
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;&#13;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;&#13;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;&#13;
+/*!40101 SET NAMES utf8mb4 */;&#13;
+&#13;
+--&#13;
+-- Base de datos: `yii2advanced`&#13;
+--&#13;
+&#13;
+-- --------------------------------------------------------&#13;
+&#13;
+--&#13;
+-- Estructura de tabla para la tabla `users`&#13;
+--&#13;
+&#13;
+CREATE TABLE `users` (&#13;
+  `id` int(11) NOT NULL,&#13;
+  `username` varchar(50) NOT NULL,&#13;
+  `nombre_completo` varchar(100) NOT NULL,&#13;
+  `pais` int(11) NOT NULL,&#13;
+  `email` varchar(80) NOT NULL,&#13;
+  `password` varchar(250) NOT NULL,&#13;
+  `authKey` varchar(250) NOT NULL,&#13;
+  `patrocinador` int(11) NOT NULL,&#13;
+  `direccion_billetera` varchar(100) NOT NULL,&#13;
+  `accessToken` varchar(250) NOT NULL,&#13;
+  `activate` tinyint(1) NOT NULL DEFAULT '0',&#13;
+  `estado` int(11) NOT NULL DEFAULT '0' COMMENT '0: inactivo, 1: activo, 2: activado, 3: desactivado',&#13;
+  `verification_code` varchar(250) NOT NULL&#13;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;&#13;
+&#13;
+--&#13;
+-- Volcado de datos para la tabla `users`&#13;
+--&#13;
+&#13;
+INSERT INTO `users` (`id`, `username`, `nombre_completo`, `pais`, `email`, `password`, `authKey`, `patrocinador`, `direccion_billetera`, `accessToken`, `activate`, `estado`, `verification_code`) VALUES&#13;
+(1, 'mauroshek', 'Andres Mauricio Shek', 1, 'asdasd@asdadsds.coms', '', '', 1, '', '', 1, 0, '');&#13;
+&#13;
+--&#13;
+-- Índices para tablas volcadas&#13;
+--&#13;
+&#13;
+--&#13;
+-- Indices de la tabla `users`&#13;
+--&#13;
+ALTER TABLE `users`&#13;
+  ADD PRIMARY KEY (`id`),&#13;
+  ADD KEY `patrocinador` (`patrocinador`),&#13;
+  ADD KEY `pais` (`pais`);&#13;
+&#13;
+--&#13;
+-- AUTO_INCREMENT de las tablas volcadas&#13;
+--&#13;
+&#13;
+--&#13;
+-- AUTO_INCREMENT de la tabla `users`&#13;
+--&#13;
+ALTER TABLE `users`&#13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;&#13;
+--&#13;
+-- Restricciones para tablas volcadas&#13;
+--&#13;
+&#13;
+--&#13;
+-- Filtros para la tabla `users`&#13;
+--&#13;
+ALTER TABLE `users`&#13;
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`patrocinador`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,&#13;
+  ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`pais`) REFERENCES `paises` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;&#13;
+&#13;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;&#13;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;&#13;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;&#13;
+</Sql>
+    </SqlText>
+  </SqlTexts>
 </Db>

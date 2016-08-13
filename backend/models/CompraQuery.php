@@ -3,9 +3,9 @@
 namespace backend\models;
 
 /**
- * This is the ActiveQuery class for [[Compra]].
+ * This is the ActiveQuery class for [[compra]].
  *
- * @see Compra
+ * @see compra
  */
 class CompraQuery extends \yii\db\ActiveQuery
 {
@@ -16,7 +16,7 @@ class CompraQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return Compra[]|array
+     * @return compra[]|array
      */
     public function all($db = null)
     {
@@ -25,7 +25,7 @@ class CompraQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return Compra|array|null
+     * @return compra|array|null
      */
     public function one($db = null)
     {

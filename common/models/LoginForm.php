@@ -30,6 +30,15 @@ class LoginForm extends Model
             ['password', 'validatePassword'],
         ];
     }
+    
+    public function attributeLabels() {
+        return [
+            'username' => Yii::t('app', 'Username'),
+            'rememberMe' => Yii::t('app', 'Remember Me'),
+            'password' => Yii::t('app', 'Password'),           
+            
+        ];
+    }
 
     /**
      * Validates the password.

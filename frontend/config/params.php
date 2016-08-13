@@ -1,10 +1,13 @@
 <?php
 return [
-    'adminEmail' => 'info@weifastpay.com',
+    'adminEmail' => 'mauroshek@gmail.com',
+    'title' => 'Wei Fast Pay - Corporativo',
+    'salt' => 'fsddsflj38343lj0',
     'languages' =>[
-        'fr' => 'french',
-        'en' => 'english',
-        'es' => 'spanish',
-        'ru' => 'russian'
+        'fr-FR' => 'Frances',
+        'en-US' => 'English',
+        'es' => 'Español',
+        'ru-RU' => 'русский',
+        'hi-IN' => 'हिन्दी'
     ]
 ];
