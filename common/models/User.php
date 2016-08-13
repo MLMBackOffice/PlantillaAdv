@@ -20,6 +20,7 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
     public $verification_code;
     public $idioma;
     public $fecha_nacimiento;
+    public $fecha_creacion;
 
     /**
      * @inheritdoc
