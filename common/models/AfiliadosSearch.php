@@ -43,8 +43,8 @@ class AfiliadosSearch extends Users
     {
         $query= (new \yii\db\Query())
                 ->select(['p.id', 'p.username as Usuario', 'p.nombre_completo as Nombre',
-                            'count(u1.username) as N1', 'count(u2.id) as N2', 'count(u3.id) as N3', 
-                            'count(u4.id) as N4', 'count(u5.id) as N5', 'count(u6.id) as N6'])
+                            'count(DISTINCT u1.username) as N1', 'count(DISTINCT u2.id) as N2', 'count(DISTINCT u3.id) as N3', 
+                            'count(DISTINCT u4.id) as N4', 'count(DISTINCT u5.id) as N5', 'count(DISTINCT u6.id) as N6'])
                 ->from('users p')
                 ->leftJoin('users u1', 'u1.patrocinador=p.id')
                 ->leftJoin('users u2', 'u2.patrocinador=u1.id')

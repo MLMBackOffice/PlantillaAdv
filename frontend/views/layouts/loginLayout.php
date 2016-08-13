@@ -20,6 +20,9 @@ LoginAsset::register($this);
 <body class="login-page">
     <?php $this->beginBody() ?>
     <div class="wrap">
+        <div style="text-align: center">
+             <?php echo Html::a(Html::img('@web/dist/img/logo-verde.png'), 'https://www.weifastpay.com') ?>
+        </div>
         <div class="container">
             <?= $content ?>            
         </div>        

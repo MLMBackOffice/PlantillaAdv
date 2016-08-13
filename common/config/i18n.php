@@ -14,7 +14,7 @@ return [
     'interactive' => true,
     'sourcePath' => __DIR__. DIRECTORY_SEPARATOR .'..',
     'messagePath' => __DIR__ . DIRECTORY_SEPARATOR .'..'. DIRECTORY_SEPARATOR . 'messages',
-    'languages' => ['de','es','it','ja','hi','ru'],
+    'languages' => ['ar', 'de', 'el', 'es', 'en', 'fr', 'he', 'it', 'ja', 'pt-BR', 'ru'],
     'translator' => 'Yii::t',
     'sort' => false,
     'overwrite' => true,

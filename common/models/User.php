@@ -18,6 +18,8 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
     public $direccion_billetera;
     public $estado;
     public $verification_code;
+    public $idioma;
+    public $fecha_nacimiento;
 
     /**
      * @inheritdoc

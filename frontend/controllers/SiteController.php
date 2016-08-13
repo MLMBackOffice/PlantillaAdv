@@ -22,6 +22,7 @@ use yii\web\Session;
 use app\models\FormRecoverPass;
 use app\models\FormResetPass;
 use yii\web\NotFoundHttpException;
+use backend\models\Idiomas;
 
 /**
  * Site controller
@@ -77,6 +78,8 @@ class SiteController extends Controller
     
     public function actionIndex() {
         
+        Yii::$app->language = Yii::$app->getRequest()->getCookies()->getValue('language');
+        
         if (Yii::$app->user->isGuest) {
             return $this->redirect(["login"]);
         } else {
@@ -101,7 +104,9 @@ class SiteController extends Controller
 //        if (!Yii::$app->user->isGuest) {
 //            return $this->goHome();
 //        }
-
+        
+        Yii::$app->language = Yii::$app->getRequest()->getCookies()->getValue('language');
+                
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
@@ -202,13 +207,13 @@ class SiteController extends Controller
                 $activar->activate = 1;
                 if ($activar->update())
                 {
-                    echo "Enhorabuena registro llevado a cabo correctamente, redireccionando ...";
-                    echo "<meta http-equiv='refresh' content='8; ".Url::toRoute("login")."'>";
+                    echo '<h3 class="alert alert-success" style="text-align:center">'.Yii::t('app','Congratulations registration carried out correctly. You are being redirected...').'</h3>';
+                    echo "<meta http-equiv='refresh' content='5; ".Url::toRoute("login")."'>";
                 }
                 else
                 {
-                    echo "Ha ocurrido un error al realizar el registro, redireccionando ...";
-                    echo "<meta http-equiv='refresh' content='8; ".Url::toRoute("login")."'>";
+                    echo '<h3 class="alert alert-success" style="text-align:center">'.Yii::t('app','There was an error when registering. You are being redirected...').'</h3>';
+                    echo "<meta http-equiv='refresh' content='5; ".Url::toRoute("login")."'>";
                 }
              }
             else //Si no existe redireccionamos a login
@@ -268,11 +273,17 @@ class SiteController extends Controller
             {
                 //user-patrocinador
                 $patrocinador = Users::find()->where(["username" => $post['FormRegister']['patrocinador']])->one();
-                $model->patrocinador = urlencode($patrocinador->id);         
+                $model->patrocinador = urlencode($patrocinador->id);   
+                
+                //Idioma
+                $codigo_idioma = $post['FormRegister']['idioma'];
+                $idioma = Idiomas::find()->where(["codigo" => $codigo_idioma])->one();
+                $model->idioma = urlencode($idioma->id); 
 
                 //Preparamos la consulta para guardar el usuario
                 $table = new Users;
                 $table->username = $model->username;
+                $table->fecha_nacimiento = $model->fecha_nacimiento;
                 $table->email = $model->email;
                 //Encriptamos el password
                 $table->password = crypt($model->password, Yii::$app->params["salt"]);
@@ -287,6 +298,7 @@ class SiteController extends Controller
                 $table->pais = $model->pais;
                 $table->nombre_completo = $model->nombre_completo;
                 $table->direccion_billetera = $model->direccion_billetera;
+                $table->idioma = $model->idioma;
 
                 //Si el registro es guardado correctamente
                 if ($table->insert())
@@ -317,13 +329,21 @@ class SiteController extends Controller
                    $model->nombre_completo = null;
                    $model->direccion_billetera = null;
 
-                   $msg = "Enhorabuena, ahora sólo falta que confirmes tu registro en tu cuenta de correo";
+                   $msg = Yii::t('app','Congratulations, you now only need to confirm your registration in your mailbox.');
                    
+                   Yii::$app->language = $codigo_idioma;
+
+                    $languageCookie = new Cookie([
+                        'name' => 'language',
+                        'value' => $codigo_idioma,
+                        'expire' => time() + 60 * 60 * 24 * 30, // 30 days
+                    ]);
+                    Yii::$app->response->cookies->add($languageCookie);
                    
                 }
                 else
                 {
-                    $msg = "Ha ocurrido un error al llevar a cabo tu registro";
+                    $msg = Yii::t('app','Failed to perform your registration, please try again');
                 }
 
             }
@@ -427,6 +447,8 @@ class SiteController extends Controller
         Yii::$app->response->cookies->add($languageCookie);
         
         return $this->render('index');
+         //return $this->render(Yii::$app->getRequest()->getUrl());
+         //return $this->render(Yii::$app->getUrlManager()->getBaseUrl());
     }
 //    
 //    public function actionPerfil(){

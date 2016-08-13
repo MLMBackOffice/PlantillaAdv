@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="login-logo">
         </div>
         <div class="login-box-body">
-            <p class="login-box-msg"><?= Yii::t('app', 'Login')?></p>
+            <h3 class="login-box-msg"><?= Yii::t('app', 'Enter your virtual office')?></h3>
             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
                 <?= $form->field($model, 'username',['options'=>[
                     'tag'=>'div',
@@ -32,11 +32,12 @@ $this->params['breadcrumbs'][] = $this->title;
                     . '{error}{hint}'
                     ])->passwordInput(['placeholder'=>Yii::t('app', 'Password')]) ?>
                 <?= $form->field($model, 'rememberMe')->checkbox() ?>
-            <div style="color:#999;margin:1em 0">
-                    <?= Html::a(Yii::t('app', 'Restore Password'), ['site/recoverpass']) ?>.
-                </div>
+            
                 <div class="form-group">
-                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                    <?= Html::submitButton(Yii::t('app', 'Login'), ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                </div>
+                <div style="color:#999;margin:1em 0">
+                    <?= Html::a(Yii::t('app', 'Restore Password'), ['site/recoverpass']) ?>.
                 </div>
             <?php ActiveForm::end(); ?>
         </div>

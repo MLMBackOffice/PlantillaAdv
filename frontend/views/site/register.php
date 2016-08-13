@@ -3,6 +3,8 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use backend\models\Paises;
+use backend\models\Idiomas;
+use yii\jui\DatePicker;
 
 $this->title = Yii::t('app', 'Join WeiFastPay');
 ?>
@@ -40,9 +42,14 @@ $this->title = Yii::t('app', 'Join WeiFastPay');
     <?php // $form->field($model, 'patrocinador') ->textInput(['autofocus' => true])?>
     <?= $form->field($model, 'pais')->dropDownList(
             ArrayHelper::map(Paises::find()->all(),'id','descripcion'),
-               ['prompt'=>'Seleccionar País']
+               ['prompt'=>Yii::t('app', 'Select Country')]
             )
-   ?>    
+   ?>
+    <?= $form->field($model, 'idioma')->dropDownList(
+            ArrayHelper::map(Idiomas::find()->all(),'codigo','descripcion'),
+               ['prompt'=>Yii::t('app', 'Select Language')]
+            )
+   ?>
     <?php if ($patr): ?>
         <?=  $form->field($model, 'patrocinador')->textInput(array('value'=>$patr, 'readonly'=>true)) ?>
     <?php endif; ?>
@@ -52,6 +59,15 @@ $this->title = Yii::t('app', 'Join WeiFastPay');
 
     <?= $form->field($model, "username")->input("text") ?>
    <?= $form->field($model, 'nombre_completo')->input("text") ?>
+    
+   <?php echo $form->field($model,'fecha_nacimiento')->
+    widget(DatePicker::className(),[
+        'dateFormat' => 'yyyy-MM-dd',
+        'clientOptions' => [
+            'yearRange' => '-80:+0',
+            'changeYear' => true]
+    ]) ?>         
+            
    <?= $form->field($model, 'direccion_billetera')->input("text") ?>
     <?= $form->field($model, "email")->input("email") ?>   
     <?= $form->field($model, "password")->input("password") ?> 

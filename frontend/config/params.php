@@ -8,6 +8,7 @@ return [
         'en-US' => 'English',
         'es' => 'Español',
         'ru-RU' => 'русский',
-        'hi-IN' => 'हिन्दी'
+        //'hi-IN' => 'हिन्दी',
+        'de' => 'Deutsch'
     ]
 ];
