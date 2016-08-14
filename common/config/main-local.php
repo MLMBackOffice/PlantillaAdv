@@ -17,6 +17,19 @@ return [
             // for the mailer to send real emails.
             'useFileTransport' => true,
         ],
+            'urlManager' => [
+            'class' => 'yii\web\UrlManager',
+            // Disable index.php
+            'showScriptName' => false,
+            // Disable r= routes
+            'enablePrettyUrl' => true,
+            'rules' => array(
+                '<controller:\w+>/<id:\d+>' => '<controller>/view',
+                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+    //            '<controller:\w+>/<action:\w+>/<patrocinador:\w+>' => '<controller>/<action>/<patrocinador>',
+            ),
+        ],
          'i18n' => [
             'translations' => [
                 'app*' => [
