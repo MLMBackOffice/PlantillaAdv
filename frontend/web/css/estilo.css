@@ -1,0 +1,78 @@
+body{
+	margin: 0;
+	background-image: url("../dist/img/fondo.jpg") !important;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+@media (min-width: 360px){
+
+}
+
+@media (min-width: 920px){
+
+}
+
+footer{
+	background-color:#32b496 !important;
+	color: white;
+	padding: 20px 0 20px 0;
+}
+
+footer .design{
+	float: right;
+}
+
+footer a{	
+	color: lightgray;
+}
+
+.video-fondo{
+	width: 100%;
+	position: fixed;
+	z-index: -10;
+}
+
+
+.titulo{
+	font-family: 'Candal', sans-serif;
+	z-index: 1;
+}
+
+.titulo h2{	
+	color: white;
+	font-size: 30px;
+}
+
+.titulo h1{	
+	color: #32b496;
+	font-size: 45px;
+}
+
+.video-ppal{
+	margin: 20px 0 20px 0;
+	display: inline-block;
+}
+
+.videitos{	
+	margin: 5px 0 20px 0;
+	display: inline-block;
+        padding-left: 100px;
+}
+
+.videitos img{
+	margin: 0 2px 0 15px;
+}
+
+.boton{
+	margin-top: 20px;
+}
+
+.btn-success{
+	background-color:#32b496 !important;
+	border-color:#32b496 !important;
+}
+
+.texto-perfil{
+	color:white;
+}

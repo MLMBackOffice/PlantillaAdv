@@ -42,7 +42,7 @@ class paquetes extends \yii\db\ActiveRecord
         return [
             'id_paquete' => Yii::t('app', 'Id Paquete'),
             'costo' => Yii::t('app', 'Costo'),
-            'nombre' => Yii::t('app', 'Nombre'),
+            'nombre' => Yii::t('app', 'Paquete'),
         ];
     }
 

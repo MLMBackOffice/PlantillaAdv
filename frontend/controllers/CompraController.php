@@ -3,8 +3,8 @@
 namespace frontend\controllers;
 
 use Yii;
-use backend\models\Compra;
-use backend\models\Empresa;
+use backend\models\compra;
+use backend\models\empresa;
 use backend\models\paquetes;
 use backend\models\CompraSearch;
 use yii\web\Controller;
@@ -107,17 +107,16 @@ class CompraController extends Controller {
 
             throw new NotFoundHttpException('The company  does not exist.');
         }
+        /*num orden random para enviar a tropay*/
         $num_orden = Yii::$app->getSecurity()->generateRandomString(5);
-
+      
         $model->id_usuario = Yii::$app->user->id;
         $model->empresa_id = $empresa->Id;
         $model->fecha_registro = date('Y-m-d h:m:s');
         $model->num_orden = $num_orden;
-        // $model->fecha_vencimiento = date('Y-m-d h:m:s');
-        $model->estado = '0';
-        //  $model->id_paquete = 1;
-
+    
         $searchModel = new CompraSearch();
+        $searchModel->id_usuario=Yii::$app->user->id;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         if ($model->load(Yii::$app->request->post())) {
@@ -133,27 +132,6 @@ class CompraController extends Controller {
             }else
                 return 0;
 
-
-            //    $postData = array('type' => 'int', 'txid' => '54345f6a-3f3a-4376-abb3-8bd8c7f6d3d6');
-          /*  $url = '"https://tropay.com/api/bitcoin-invoice/' . "eyJpdiI6IkdFaFVNaTY3ZUF4UzA1STJwVGNkWEE9PSIsInZhbHVlIjoibFozYmF4QXF3QVpTUVl6TmlQWExxQnBWZ1BMOGdPdVNWcmRFSDRnbGNEMk1hbEtnMlpHOGJJRVpNc2RocGlQSyIsIm1hYyI6IjU1NzRiNGFhNDA4OGY5NGUzMTBmM2ExOGVlYTA3OGY3NDFlZDNlMmI5NTAxZDI5ZDdhZDRhZWRiNmRkY2JiMmEifQ==" . "/" . $paquete->costo . "/" . "referencia" . '/' . "titulo";
-            $handler = curl_init();
-            curl_setopt($handler, CURLOPT_URL, $url);
-           // curl_setopt($handler, CURLOPT_POST, true);
-            curl_setopt($handler, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($handler, CURLOPT_SSL_VERIFYHOST, false);
-            $response = curl_exec($handler);
-            curl_close($handler);
-*/
-
-          //  return ($response);
-            //    header('Location: '.'"https://tropay.com/api/bitcoin-invoice/'."eyJpdiI6IkdFaFVNaTY3ZUF4UzA1STJwVGNkWEE9PSIsInZhbHVlIjoibFozYmF4QXF3QVpTUVl6TmlQWExxQnBWZ1BMOGdPdVNWcmRFSDRnbGNEMk1hbEtnMlpHOGJJRVpNc2RocGlQSyIsIm1hYyI6IjU1NzRiNGFhNDA4OGY5NGUzMTBmM2ExOGVlYTA3OGY3NDFlZDNlMmI5NTAxZDI5ZDdhZDRhZWRiNmRkY2JiMmEifQ=="."/". $paquete->costo."/"."referencia".'/'."titulo");
-               //  return $this->redirect('"https://tropay.com/api/bitcoin-invoice/'."eyJpdiI6IkdFaFVNaTY3ZUF4UzA1STJwVGNkWEE9PSIsInZhbHVlIjoibFozYmF4QXF3QVpTUVl6TmlQWExxQnBWZ1BMOGdPdVNWcmRFSDRnbGNEMk1hbEtnMlpHOGJJRVpNc2RocGlQSyIsIm1hYyI6IjU1NzRiNGFhNDA4OGY5NGUzMTBmM2ExOGVlYTA3OGY3NDFlZDNlMmI5NTAxZDI5ZDdhZDRhZWRiNmRkY2JiMmEifQ=="."/". $paquete->costo."/"."referencia".'/'."titulo");
-            //         , 'type' => 'int', 'txid' => '54345f6a-3f3a-4376-abb3-8bd8c7f6d3d6'));
-            
-         /*     return $this->render('//compra/_form', [ 'model' => $model,
-              'empresa' => $empresa,
-              'searchModel' => $searchModel,
-              'dataProvider' => $dataProvider,]); */
         } else {
             return $this->render('//compra/_form', [
                         'model' => $model,
@@ -249,6 +227,15 @@ class CompraController extends Controller {
             ]);
         }
     }
+    public function actionMensaje() {
+         $user = Yii::$app->user->identity;
+
+        if (empty($user))
+            return $this->redirect(["/site/login"]);
+        
+        return $this->render('mensaje_exito');
+    }
+
 
     /**
      * Deletes an existing Compra model.
@@ -258,7 +245,7 @@ class CompraController extends Controller {
      */
     public function actionDelete($id) {
         $compra = $this->findModel($id);
-        if ($compra->estado == 0)
+        if ($compra->status == 'pendient')
             $compra->delete();
 
         return $this->redirect(['create']);

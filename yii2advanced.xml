@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="UTF-8"?><Db flnm="yii2advanced" nm="yii2advanced" ver="1.3.4">
+  <VerLbl/>
+  <VerNotes/>
+  <DefTblOpts/>
+  <DocFolder>C:\xampp\htdocs\PlantillaAdv</DocFolder>
+  <Sch Cm="" nm="schemaA">
+    <Tbl UsSo="1" nm="comisiones">
+      <TblOpts>ENGINE=InnoDB DEFAULT CHARSET=latin1</TblOpts>
+      <Pk ClNs="id_comision" nm="pkcomisiones"/>
+      <Cl au="1" df="" nm="id_comision" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="valor" nu="0">
+        <DT arr="0" ds="Decimal" en="" id="3" ln="10" sc="2" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_compra" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>id compra que genera la comision</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="status" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="250" sc="null" sg="1" un="0"/>
+        <Cm>not generated, pendient, confirmed, canceled</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="id_usuario_comision" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>usuario que recibe la comision</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="nivel_pagado" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>nivel que pertenece la comision pagada</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_comision" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>fecha en que se realiza la comision.</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_registro" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>fecba registro de la comision</Cm>
+      </Cl>
+      <Fk deAc="3" nm="fk_comisiones_users" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="users" oe="1" sch="schemaA" zr="1"/>
+        <CdTb mn="1" nm="comisiones" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="id_usuario_comision" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="compra">
+      <TblOpts>ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=latin1</TblOpts>
+      <Pk ClNs="id_compra" nm="pkcompra"/>
+      <Cl au="1" df="" nm="id_compra" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="CURRENT_TIMESTAMP" nm="fecha_registro" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_usuario" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_paquete" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="empresa_id" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_vencimiento" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="Id_confirmacion" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="num_orden" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="10" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="pay_reference" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="250" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="coin_amount" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fiat_amount" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fiat_name" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="250" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="status" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="250" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="usd_amount" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="bitcoin_txId" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="250" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="internal_txId" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="250" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cardId" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="250" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="coin_name" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="address" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="250" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="type" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="250" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_compra_comisiones" prLkCl="id_compra" upAc="3">
+        <PrTb mn="0" nm="comisiones" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="compra" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="id_compra" prCl="id_compra"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_compra_confirmacion_compra" prLkCl="Id_confirmacion" upAc="3">
+        <PrTb mn="0" nm="confirmacion_compra" oe="1" sch="schemaA" zr="1"/>
+        <CdTb mn="1" nm="compra" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="Id_confirmacion" prCl="Id_confirmacion"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_compra_Empresa" prLkCl="Id" upAc="3">
+        <PrTb mn="0" nm="empresa" oe="1" sch="schemaA" zr="1"/>
+        <CdTb mn="1" nm="compra" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="empresa_id" prCl="Id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_compra_paquetes" prLkCl="id_paquete" upAc="3">
+        <PrTb mn="0" nm="paquetes" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="compra" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="id_paquete" prCl="id_paquete"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_compra_users" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="users" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="compra" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="id_usuario" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="fk_compra_confirmacion_compra" spa="0" unq="0">
+        <ClNs>Id_confirmacion</ClNs>
+        <OptTx>USES BTREE</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="fk_compra_Empresa" spa="0" unq="0">
+        <ClNs>empresa_id</ClNs>
+        <OptTx>USES BTREE</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="fk_compra_paquetes" spa="0" unq="0">
+        <ClNs>id_paquete</ClNs>
+        <OptTx>USES BTREE</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="fk_compra_users" spa="0" unq="0">
+        <ClNs>id_usuario</ClNs>
+        <OptTx>USES BTREE</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="confirmacion_compra">
+      <Cm>tabla que almacena los datos de confirmacion de un pago real</Cm>
+      <TblOpts>ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='tabla que almacena los datos de confirmacion de un pago real'</TblOpts>
+      <Pk ClNs="Id_confirmacion" nm="pkconfirmacion_compra"/>
+      <Cl au="0" df="" nm="Id_confirmacion" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="observacion" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="CURRENT_TIMESTAMP" nm="fecha_confirmacion" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="empresa">
+      <TblOpts>ENGINE=InnoDB DEFAULT CHARSET=latin1</TblOpts>
+      <Pk ClNs="Id" nm="pkempresa"/>
+      <Cl au="0" df="" nm="Id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cardId" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="38" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="idiomas">
+      <TblOpts>ENGINE=InnoDB DEFAULT CHARSET=latin1</TblOpts>
+      <Pk ClNs="codigo" nm="pkidiomas"/>
+      <Cl au="0" df="" nm="codigo" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="10" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="descripcion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="log_error_calback">
+      <TblOpts>ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=latin1</TblOpts>
+      <Pk ClNs="Id" nm="pklog_error_calback"/>
+      <Cl au="1" df="" nm="Id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="descripcion" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="250" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="CURRENT_TIMESTAMP" nm="fecha_registro" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="migration">
+      <TblOpts>ENGINE=InnoDB DEFAULT CHARSET=latin1</TblOpts>
+      <Pk ClNs="version" nm="pkmigration"/>
+      <Cl au="0" df="" nm="version" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="180" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="apply_time" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="nivel">
+      <TblOpts>ENGINE=InnoDB DEFAULT CHARSET=latin1</TblOpts>
+      <Pk ClNs="id_upline, nivel, usuarios_id_usuario" nm="pknivel"/>
+      <Cl au="0" df="" nm="id_upline" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nivel" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="usuarios_id_usuario" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="paises">
+      <TblOpts>ENGINE=InnoDB AUTO_INCREMENT=196 DEFAULT CHARSET=latin1</TblOpts>
+      <Pk ClNs="id" nm="pkpaises"/>
+      <Cl au="1" df="" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="descripcion" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="paquetes">
+      <TblOpts>ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1</TblOpts>
+      <Pk ClNs="id_paquete" nm="pkpaquetes"/>
+      <Cl au="1" df="" nm="id_paquete" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="costo" nu="1">
+        <DT arr="0" ds="Decimal" en="" id="3" ln="10" sc="2" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="1" nm="duracion" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>numero de meses que permanece activo el usuario</Cm>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="user">
+      <TblOpts>ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci</TblOpts>
+      <Pk ClNs="id" nm="pkuser"/>
+      <Cl au="1" df="" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre_completo" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="username" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="patrocinador" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="auth_key" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="32" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="password_hash" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="password_reset_token" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="email" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="pais" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="direccion_billetera" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="38" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="10" nm="status" nu="0">
+        <DT arr="0" ds="SmallInt" en="" id="5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_at" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="updated_at" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="user_ibfk_1" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="user" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="user" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="patrocinador" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="user_ibfk_2" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="paises" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="user" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="pais" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="email" spa="0" unq="1">
+        <ClNs>email</ClNs>
+        <OptTx>USES BTREE</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="id" spa="0" unq="0">
+        <ClNs>id</ClNs>
+        <OptTx>USES BTREE</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="id_2" spa="0" unq="0">
+        <ClNs>id</ClNs>
+        <OptTx>USES BTREE</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="password_reset_token" spa="0" unq="1">
+        <ClNs>password_reset_token</ClNs>
+        <OptTx>USES BTREE</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="patrocinador" spa="0" unq="0">
+        <ClNs>patrocinador</ClNs>
+        <OptTx>USES BTREE</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="username" spa="0" unq="1">
+        <ClNs>username</ClNs>
+        <OptTx>USES BTREE</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="users">
+      <TblOpts>ENGINE=InnoDB AUTO_INCREMENT=888 DEFAULT CHARSET=latin1</TblOpts>
+      <Pk ClNs="id" nm="pkusers"/>
+      <Cl au="1" df="" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="username" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre_completo" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="pais" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="email" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="80" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="password" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="250" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="authKey" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="250" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="patrocinador" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="direccion_billetera" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="accessToken" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="250" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="activate" nu="0">
+        <DT arr="0" ds="TinyInt" en="" id="-6" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="1" nm="estado" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="verification_code" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="250" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="idioma" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="10" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_nacimiento" nu="1">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="CURRENT_TIMESTAMP" nm="fecha_creacion" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="0" nm="user_idioma" prLkCl="codigo" upAc="0">
+        <PrTb mn="0" nm="idiomas" oe="1" sch="schemaA" zr="1"/>
+        <CdTb mn="1" nm="users" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="idioma" prCl="codigo"/>
+      </Fk>
+      <Fk deAc="0" nm="user_pais" prLkCl="id" upAc="0">
+        <PrTb mn="0" nm="paises" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="users" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="pais" prCl="id"/>
+      </Fk>
+      <Fk deAc="0" nm="user_pat" prLkCl="id" upAc="0">
+        <PrTb mn="0" nm="users" oe="1" sch="schemaA" zr="0"/>
+        <CdTb mn="1" nm="users" oe="0" sch="schemaA" zr="1"/>
+        <ClPr cdCl="patrocinador" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="fk_users_idiomas" spa="0" unq="0">
+        <ClNs>idioma</ClNs>
+        <OptTx>USES BTREE</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="pais" spa="0" unq="0">
+        <ClNs>pais, pais</ClNs>
+        <OptTx>USES BTREE</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="patrocinador" spa="0" unq="0">
+        <ClNs>patrocinador</ClNs>
+        <OptTx>USES BTREE</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <CustomTypes/>
+  </Sch>
+  <Dgm nm="diagramA">
+    <RnCf ClkAct="true" FtSz="11" lkStgy="RightAngleStrategy" zm="1.0">
+      <VbCfg>
+        <Fg ky="Auto Number" vl="0"/>
+        <Fg ky="Check" vl="0"/>
+        <Fg ky="Comment" vl="0"/>
+        <Fg ky="Data Type" vl="1"/>
+        <Fg ky="Default" vl="0"/>
+        <Fg ky="ENUM Values" vl="0"/>
+        <Fg ky="Length" vl="1"/>
+        <Fg ky="Name" vl="1"/>
+        <Fg ky="Nullable" vl="0"/>
+        <Fg ky="Schema Name" vl="0"/>
+        <Fg ky="Signed" vl="0"/>
+      </VbCfg>
+    </RnCf>
+    <DiaProps>
+      <Show AllCols="1" FkCols="1" FkNms="1" PkCols="1"/>
+      <ErNotation>BarkerErNotation</ErNotation>
+      <DbTableRectangleFill>HeaderFooterFill</DbTableRectangleFill>
+      <svg path=""/>
+    </DiaProps>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="comisiones" x="462" y="418"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="compra" x="455" y="48"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="confirmacion_compra" x="45" y="249"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="empresa" x="110" y="131"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="idiomas" x="961" y="549"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="log_error_calback" x="2229" y="50"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="migration" x="1921" y="144"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="nivel" x="99" y="407"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="paises" x="1205" y="50"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="paquetes" x="85" y="50"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="user" x="1542" y="50"/>
+    <TbGl bkCl="ff6666ff" sch="schemaA" tbl="users" x="821" y="50"/>
+    <FkGl bkCl="ff000000" childEdge="EAST" nm="schemaA.comisiones.fk_comisiones_users" parentEdge="SOUTH" positioner="TwoLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="PARENT_LINE" x1="953" x2="953" y1="285" y2="466"/>
+        <positionableLine lineRole="CHILD_LINE" x1="744" x2="949" y1="470" y2="470"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="SOUTH" nm="schemaA.compra.fk_compra_comisiones" parentEdge="NORTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="706" x2="706" y1="418" y2="335"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="WEST" nm="schemaA.compra.fk_compra_confirmacion_compra" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="309" x2="455" y1="282" y2="282"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="WEST" nm="schemaA.compra.fk_compra_Empresa" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="314" x2="455" y1="164" y2="164"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="WEST" nm="schemaA.compra.fk_compra_paquetes" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="314" x2="455" y1="83" y2="83"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="EAST" nm="schemaA.compra.fk_compra_users" parentEdge="WEST" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="821" x2="722" y1="167" y2="167"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="SOUTH" nm="schemaA.user.user_ibfk_1" parentEdge="NORTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="WEST" nm="schemaA.user.user_ibfk_2" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="1422" x2="1542" y1="76" y2="76"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="EAST" nm="schemaA.users.user_idioma" parentEdge="NORTH" positioner="TwoLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="PARENT_LINE" x1="1173" x2="1173" y1="549" y2="284"/>
+        <positionableLine lineRole="CHILD_LINE" x1="1085" x2="1169" y1="280" y2="280"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="EAST" nm="schemaA.users.user_pais" parentEdge="WEST" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="1205" x2="1085" y1="76" y2="76"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="SOUTH" nm="schemaA.users.user_pat" parentEdge="NORTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines/>
+    </FkGl>
+    <Notes/>
+    <Zones/>
+  </Dgm>
+  <RnmMgr NxRnmId="3">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="comisiones" SupCls="Schema" SupNme="schemaA">
+      <Rnm id="2" nNm="id_usuario_comision" oNm="id_usuario"/>
+      <Rnm id="1" nNm="id_usuario" oNm="id"/>
+    </RnmCh>
+  </RnmMgr>
+  <DbDocOptionMgr>
+    <BasicOptionMgr>
+      <Name>db.doc.option.mgr</Name>
+      <BoolOpt lbl="Diagrams" nm="doc.diagrams" on="1" spl="0"/>
+      <BoolOpt lbl="Foreign Keys" nm="doc.fks" on="1" spl="0"/>
+      <BoolOpt lbl="Indexes" nm="doc.indexes" on="1" spl="0"/>
+      <BoolOpt lbl="Overwrite CSS File" nm="doc.overwrite.css" on="1" spl="0"/>
+      <BoolOpt lbl="Procedures" nm="doc.procs" on="1" spl="0"/>
+      <BoolOpt lbl="Schemas" nm="doc.schemas" on="1" spl="0"/>
+      <BoolOpt lbl="Sequences" nm="doc.sequences" on="1" spl="0"/>
+      <BoolOpt lbl="Tables" nm="doc.tables" on="1" spl="0"/>
+      <BoolOpt lbl="Triggers" nm="doc.triggers" on="1" spl="0"/>
+      <BoolOpt lbl="Views" nm="doc.views" on="1" spl="0"/>
+    </BasicOptionMgr>
+  </DbDocOptionMgr>
+  <OpenEditors>
+    <OpenEditor ClsNm="Diagram" fqn="null.diagramA" selected="0"/>
+  </OpenEditors>
+  <TreePaths>
+    <TreePath/>
+  </TreePaths>
+  <SqlTexts>
+    <SqlText path="">
+      <Sql>select u.id,u.username as 'Usuario', u.nombre_completo as 'Nombre Completo', u.email as 'Correo Electronico', &#13;
+	case when u.estado=0 then 'Inactivo' else &#13;
+    case when u.estado=1 then 'Activo' else 'Activado' end end as Estado&#13;
+from users u join users p on u.patrocinador=p.id where p.id=66;&#13;
+select u.id, u.username as Usuario, &#13;
+	u1.id, u1.username as P1, u2.id, u2.username as P2, u3.id, u3.username as P3, u4.id, u4.username as P4, u5.id, u5.username as P5, u6.id, u6.username as P6 &#13;
+from users u&#13;
+left join users u1 on u.patrocinador=u1.id&#13;
+left join users u2 on u1.patrocinador=u2.id&#13;
+left join users u3 on u2.patrocinador=u3.id&#13;
+left join users u4 on u3.patrocinador=u4.id&#13;
+left join users u5 on u4.patrocinador=u5.id&#13;
+left join users u6 on u5.patrocinador=u6.id&#13;
+where u.id=701;</Sql>
+    </SqlText>
+  </SqlTexts>
+</Db>

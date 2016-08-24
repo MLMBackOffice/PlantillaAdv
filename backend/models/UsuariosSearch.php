@@ -18,8 +18,8 @@ class UsuariosSearch extends Usuarios
     public function rules()
     {
         return [
-            [['id', 'nit'], 'integer'],
-            [['usuario', 'nombres'], 'safe'],
+            [['id', 'pais', 'patrocinador', 'activate', 'estado'], 'integer'],
+            [['username', 'nombre_completo', 'idioma', 'email', 'fecha_nacimiento', 'password', 'authKey', 'direccion_billetera', 'accessToken', 'verification_code', 'fecha_creacion'], 'safe'],
         ];
     }
 
@@ -60,11 +60,23 @@ class UsuariosSearch extends Usuarios
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'nit' => $this->nit,
+            'pais' => $this->pais,
+            'fecha_nacimiento' => $this->fecha_nacimiento,
+            'patrocinador' => $this->patrocinador,
+            'activate' => $this->activate,
+            'estado' => $this->estado,
+            'fecha_creacion' => $this->fecha_creacion,
         ]);
 
-        $query->andFilterWhere(['like', 'usuario', $this->usuario])
-            ->andFilterWhere(['like', 'nombres', $this->nombres]);
+        $query->andFilterWhere(['like', 'username', $this->username])
+            ->andFilterWhere(['like', 'nombre_completo', $this->nombre_completo])
+            ->andFilterWhere(['like', 'idioma', $this->idioma])
+            ->andFilterWhere(['like', 'email', $this->email])
+            ->andFilterWhere(['like', 'password', $this->password])
+            ->andFilterWhere(['like', 'authKey', $this->authKey])
+            ->andFilterWhere(['like', 'direccion_billetera', $this->direccion_billetera])
+            ->andFilterWhere(['like', 'accessToken', $this->accessToken])
+            ->andFilterWhere(['like', 'verification_code', $this->verification_code]);
 
         return $dataProvider;
     }

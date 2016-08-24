@@ -11,7 +11,6 @@ use common\models\Users;
  * @property string $fecha_registro
  * @property integer $id_usuario
  * @property integer $id_paquete
- * @property string $estado
  * @property integer $empresa_id
  * @property string $fecha_vencimiento
  * @property integer $Id_confirmacion
@@ -52,7 +51,7 @@ class Compra extends \yii\db\ActiveRecord
         return [
             [['fecha_registro', 'fecha_vencimiento'], 'safe'],
             [['id_usuario', 'id_paquete'], 'required'],
-            [['id_usuario', 'id_paquete', 'estado', 'empresa_id', 'Id_confirmacion', 'coin_amount', 'fiat_amount', 'usd_amount', 'coin_name'], 'integer'],
+            [['id_usuario', 'id_paquete', 'empresa_id', 'Id_confirmacion', 'coin_amount', 'fiat_amount', 'usd_amount', 'coin_name'], 'integer'],
             [['num_orden'], 'string', 'max' => 10],
             [['pay_reference', 'fiat_name', 'status', 'bitcoin_txId', 'internal_txId', 'cardId', 'address', 'type'], 'string', 'max' => 250],
             [['empresa_id'], 'exist', 'skipOnError' => true, 'targetClass' => Empresa::className(), 'targetAttribute' => ['empresa_id' => 'Id']],
@@ -68,20 +67,19 @@ class Compra extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_compra' => Yii::t('app', 'Id Compra'),
+            'id_compra' => Yii::t('app', 'Compra No.'),
             'fecha_registro' => Yii::t('app', 'Fecha Registro'),
             'id_usuario' => Yii::t('app', 'Id Usuario'),
-            'id_paquete' => Yii::t('app', 'Id Paquete'),
-            'estado' => Yii::t('app', '0:pendiente 1: confirmada 2: finalizada'),
+            'id_paquete' => Yii::t('app', 'Paquetes'),
             'empresa_id' => Yii::t('app', 'Empresa ID'),
-            'fecha_vencimiento' => Yii::t('app', 'MM/AA que esta activo para comisiones'),
+            'fecha_vencimiento' => Yii::t('app', 'Fecha Vencimiento'),
             'Id_confirmacion' => Yii::t('app', 'Id Confirmacion'),
             'num_orden' => Yii::t('app', 'numero de orden unico por compra'),
             'pay_reference' => Yii::t('app', 'pay_reference'),
             'coin_amount' => Yii::t('app', 'Coin Amount'),
             'fiat_amount' => Yii::t('app', 'Fiat Amount'),
             'fiat_name' => Yii::t('app', 'Fiat Name'),
-            'status' => Yii::t('app', 'Status'),
+            'status' => Yii::t('app', 'estado'),
             'usd_amount' => Yii::t('app', 'Usd Amount'),
             'bitcoin_txId' => Yii::t('app', 'Bitcoin Tx ID'),
             'internal_txId' => Yii::t('app', 'Internal Tx ID'),

@@ -39,6 +39,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div style="color:#999;margin:1em 0">
                     <?= Html::a(Yii::t('app', 'Restore Password'), ['site/recoverpass']) ?>.
                 </div>
+                <div style="color:#999;margin:1em 0">
+                    <?= Html::a(Yii::t('app', 'Register'), ['site/register']) ?>
+                </div>
             <?php ActiveForm::end(); ?>
         </div>
     </div>
